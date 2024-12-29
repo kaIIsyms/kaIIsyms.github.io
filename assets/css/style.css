@@ -46,7 +46,7 @@ body {
 }
 
 .ascii-checkbox input:checked + span:after {
- content: "x";
+ content: "*";
 }
 .header {
 }
