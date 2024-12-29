@@ -107,7 +107,7 @@ Podemos escolher um alvo à dedo e enviar uma query CTCP com o comando `PING` e 
 ```
 Agora que temos o endereço IP do servidor que ele está conectado (`192.223.24.132`), só converter pra decimal e fazer a zoeirinha clássica.
 ```cpp
-seppuku> echo 192.223.24.132 | tr . '\n' | awk '{s = s*256 + $1} END{print s}'
+:~# echo 192.223.24.132 | tr . '\n' | awk '{s = s*256 + $1} END{print s}'
 3235846276
 ```
 Ótimo, `3235846276`. Agora vamos construir o payload com o `DCC CHAT` e enviar pra nossa vitima `g`:
@@ -121,7 +121,7 @@ CTCP ping reply from g: ADCC CHAT x 387151157 443
 ```
 Agora sabemos que `387151157` é o endereço IP do alvo e com certeza a porta `443` agora está aberta. O que devemos fazer é transformar o endereço IP do alvo de decimal pra normal:
 ```cpp
-seppuku> (export l33t=387151157; for i in {1..4}; do s='.'$((l33t%256))$s && ((l33t>>=8)); done; echo ${s:1})
+:~# (export l33t=387151157; for i in {1..4}; do s='.'$((l33t%256))$s && ((l33t>>=8)); done; echo ${s:1})
 23.19.117.53
 ```
 Agora podemos tentar a sorte em `23.19.117.53:443` kkkkkk
