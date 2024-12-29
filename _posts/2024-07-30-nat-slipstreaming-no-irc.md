@@ -6,7 +6,7 @@ layout: post
 NAT Slipstreaming no IRC
 ===
 
-<img src=https://upload.wikimedia.org/wikipedia/commons/1/14/IRC_cover.png>
+![irc](https://upload.wikimedia.org/wikipedia/commons/1/14/IRC_cover.png)
 
 [toc]
 
