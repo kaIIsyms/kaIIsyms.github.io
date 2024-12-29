@@ -6,7 +6,7 @@ layout: post
 Movimentação Lateral com DCOM/Excel.Application
 ===
 
-<img src=https://cdn.neow.in/news/images/uploaded/2019/03/1553427271_excel3_story.jpg>
+![a](https://cdn.neow.in/news/images/uploaded/2019/03/1553427271_excel3_story.jpg)
 
 [toc]
 
@@ -78,7 +78,7 @@ Neste tópico eu usarei apenas o método **ExcelDDE**, mas antes de começarmos,
 
 Agora podemos continuar;
 
-<img src=https://www.maisaprendizagem.com.br/wp-content/uploads/2019/10/m%C3%A3o-na-massa.png>
+![a](https://www.maisaprendizagem.com.br/wp-content/uploads/2019/10/m%C3%A3o-na-massa.png)
 
 O mecanismo **DDE** pode ser utilizado pra realizar a execução de código sem macros em documentos do **Office**.
 
