@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(xd){
   symbols = document.getElementsByClassName('n');
   for(i = 0; i<symbols.length; i++){
       if(symbols[i].nextElementSibling.innerHTML == '('){
-          symbols[i].style.color = 'greenyellow';
+          symbols[i].style.color = '#660000';
       }
   }
 });
