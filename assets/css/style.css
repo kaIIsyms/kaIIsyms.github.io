@@ -180,11 +180,11 @@ pre > code {
   color: #999;
 }
 .highlight .gi {
-  color: #a6e22e;
+  color: #660000;
   background-color: #dfd;
 }
 .highlight .gi .x {
-  color: #a6e22e;
+  color: #660000;
   background-color: #afa;
 }
 .highlight .go {
@@ -235,29 +235,29 @@ pre > code {
   color: #e6db74;
 }
 .highlight .na {
-  color: #a6e22e;
+  color: #660000;
 }
 .highlight .nb {
   color: #f8f8f2;
 }
 .highlight .nc {
-  color: #a6e22e;
+  color: #660000;
 
 }
 .highlight .no {
   color: #66d9ef;
 }
 .highlight .nd {
-  color: #a6e22e;
+  color: #660000;
 }
 .highlight .ni {
   color: #f8f8f2;
 }
 .highlight .ne {
-  color: #a6e22e;
+  color: #660000;
 }
 .highlight .nf {
-  color: #a6e22e;
+  color: #660000;
 }
 .highlight .nl {
   color: #f8f8f2;
@@ -266,7 +266,7 @@ pre > code {
   color: #f8f8f2;
 }
 .highlight .nx {
-  color: #a6e22e;
+  color: #660000;
 }
 .highlight .py {
   color: #f8f8f2;
