@@ -24,10 +24,7 @@ Por exemplo pode ocorrer de no teu alvo o Outlook ter sido configurado pra ser i
 Pro azar do hacker leigo, o Windows pode promover uma auditoria host-based do LDAP com o ETW (**Event Tracing for Windows**) facilmente:
 
 - Usando o provedor `Microsoft-Windows-LDAP-Client`:
-```powershell
-wevtutil set-log "Microsoft-Windows-LDAP-Client/Debug" /enabled:true /quiet:true /retention:false /maxsize:100032
-```
-- O provedor `Microsoft-Windows-LDAP-Client` do ETW faz quando a `wldap32.dll` (api do LDAP) ser chamada (geralmente usam justamente a `wldap32.dll` pra fazer consultas no LDAP), gerar uma log, futuramente vou mostrar como burlar isso de 2 formas.
+  - O provedor `Microsoft-Windows-LDAP-Client` do ETW faz quando a `wldap32.dll` (api do LDAP) ser chamada (geralmente usam justamente a `wldap32.dll` pra fazer consultas no LDAP), gerar uma log, futuramente vou mostrar como burlar isso de 2 formas.
 ---
 - É possivel fazer uma auditoria do LDAP sniffando todo o tráfego do LDAP, também com o ETW.
 ---
