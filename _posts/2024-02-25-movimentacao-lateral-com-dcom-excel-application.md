@@ -95,7 +95,7 @@ Se o canal for estabelecido sem erros o `DDEInitiate` retornará o número do ca
 > Para evitar que perguntem se o usuário deseja abrir o aplicativo, você pode definir a opção **SAFETY** do `DDESetOption`.
 
 Exemplo:
-```vba
+```vbscript
 channelNumber = Application.DDEInitiate( _ 
  app:="WinWord", _ 
  topic:="C:\WINWORD\DOCUMENTO.DOC") 
@@ -107,7 +107,7 @@ O exemplo acima abre um canal para o **Word**, abre o documento do **Word** `doc
 Podemos fornecer `cmd` como o parâmetro do `DDEInitiate` enquanto o outro parâmetro pode ser qualquer argumento de linha de comando escolhido.
 
 Na teoria é simples, agora vamos tentar executar o método:
-```ps1
+```powershell
 $Com = [Type]::GetTypeFromProgID("Excel.Application","192.168.2.10")
 $Obj = [System.Activator]::CreateInstance($Com)
 $Obj.DisplayAlerts = $false
