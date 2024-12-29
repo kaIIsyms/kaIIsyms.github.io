@@ -15,7 +15,7 @@ Primeiro antes de falar sobre o assunto principal, vamos conhecer o LDAP.
 
 O LDAP é um protocolo fundamental usado em quase todos os ambientes Windows, ele permite que os administradores acessem o AD e gerencie usuários e grupos nele, além de permitir que recursos externos consultem dados do AD.
 
-O ponto principal do LDAP é que um servidor configurado para o LDAP pode ser completamente *standalone*, além de suportar outros OS q não são o windows, tipo o OSX e qualquer OS unix-like, como os OS q usam o kernel Linux, por exemplo.
+O ponto principal do LDAP é que um servidor configurado para o LDAP pode ser completamente *standalone*, além de suportar outros OS q não são o windows, tipo o OSX e qualquer outro OS unix-like, como os OS q usam o kernel Linux, por exemplo.
 ## Como funciona a auditoria do LDAP
 O LDAP gera uma quantidade de logs muito intensa, o que pode até dificultar o processo de identificação de atividades maliciosas durante uma análise, isso acontece porque como eu disse ali em cima, o LDAP permite que outros recursos externos (aplicações etc) consultem coisas do AD, daí já sabe né?
 
