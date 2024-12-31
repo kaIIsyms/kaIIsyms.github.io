@@ -1,8 +1,0 @@
-title: kaIIsyms
-future: true
-markdown: kramdown
-description: skidz website
-url: https://kaIIsyms.github.io
-plugins:
-  - jekyll-feed
-theme: null
